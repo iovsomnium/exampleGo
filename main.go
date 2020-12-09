@@ -11,11 +11,19 @@ import (
 // 	fmt.Println(words)
 // }
 
+type person struct {
+	name    string
+	age     int
+	favFood []string
+}
+
 func main() {
 	// name := "winner" //==const name string = 'nico'
 	// repeatMe("king", "winner", "func", "kong")
 	defer fmt.Println("i'm done")
 	// *b = 20 //pointer 원본 값 변경
 	// a = 10
-
+	favFood := []string{"kimchi", "ramen"}
+	winner := person{"king", 19, favFood}
+	fmt.Println(winner)
 }
