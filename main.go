@@ -34,18 +34,25 @@ func main() {
 	// fmt.Println(account)
 	dict := mydict.Dictionary{}
 	key := "hello"
-	value := "Greeting"
+	// value := "Greeting"
 
-	err := dict.Add("hello", "world")
+	// err := dict.Add("hello", "world")
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
+	// definition, _ := dict.Search(key)
+	// fmt.Println(definition)
+
+	// err2 := dict.Add(key, value)
+	// if err2 != nil {
+	// 	fmt.Println(err2)
+	// }
+	// fmt.Println(definition)
+	dict.Add(key, "first")
+	err := dict.Update(key, "second")
 	if err != nil {
 		fmt.Println(err)
 	}
-	definition, _ := dict.Search(key)
-	fmt.Println(definition)
-
-	err2 := dict.Add(key, value)
-	if err2 != nil {
-		fmt.Println(err2)
-	}
-	fmt.Println(definition)
+	word, _ := dict.Search(key)
+	fmt.Println(dict.Search(word))
 }
