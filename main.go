@@ -3,6 +3,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/iovsomnium/exampleGo/accounts"
 )
@@ -26,5 +27,10 @@ func main() {
 	// *b = 20 //pointer 원본 값 변경
 	// a = 10
 	account := accounts.NewAccount("king")
-	fmt.Println(account)
+	account.Deposit(20)
+	err := account.Withdraw(30)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	fmt.Println(account.Balance())
 }
