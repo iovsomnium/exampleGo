@@ -3,6 +3,8 @@ package main
 
 import (
 	"fmt"
+
+	"github.com/iovsomnium/exampleGo/accounts"
 )
 
 //formating을 위한 librarly
@@ -23,7 +25,6 @@ func main() {
 	defer fmt.Println("i'm done")
 	// *b = 20 //pointer 원본 값 변경
 	// a = 10
-	favFood := []string{"kimchi", "ramen"}
-	winner := person{"king", 19, favFood}
-	fmt.Println(winner)
+	account := accounts.NewAccount("king")
+	fmt.Println(account)
 }
