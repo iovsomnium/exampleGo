@@ -54,5 +54,5 @@ func main() {
 		fmt.Println(err)
 	}
 	word, _ := dict.Search(key)
-	fmt.Println(dict.Search(word))
+	fmt.Println(word)
 }
