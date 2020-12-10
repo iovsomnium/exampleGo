@@ -3,9 +3,8 @@ package main
 
 import (
 	"fmt"
-	"log"
 
-	"github.com/iovsomnium/exampleGo/accounts"
+	"github.com/iovsomnium/exampleGo/mydict"
 )
 
 //formating을 위한 librarly
@@ -26,11 +25,27 @@ func main() {
 	defer fmt.Println("i'm done")
 	// *b = 20 //pointer 원본 값 변경
 	// a = 10
-	account := accounts.NewAccount("king")
-	account.Deposit(20)
-	err := account.Withdraw(10)
+	// account := accounts.NewAccount("king")
+	// account.Deposit(20)
+	// err := account.Withdraw(10)
+	// if err != nil {
+	// 	log.Fatalln(err)
+	// }
+	// fmt.Println(account)
+	dict := mydict.Dictionary{}
+	key := "hello"
+	value := "Greeting"
+
+	err := dict.Add("hello", "world")
 	if err != nil {
-		log.Fatalln(err)
+		fmt.Println(err)
 	}
-	fmt.Println(account)
+	definition, _ := dict.Search(key)
+	fmt.Println(definition)
+
+	err2 := dict.Add(key, value)
+	if err2 != nil {
+		fmt.Println(err2)
+	}
+	fmt.Println(definition)
 }
