@@ -49,10 +49,11 @@ func main() {
 	// }
 	// fmt.Println(definition)
 	dict.Add(key, "first")
-	err := dict.Update(key, "second")
+	dict.Search(key)
+	dict.Delete("queen")
+	word, err := dict.Search(key)
 	if err != nil {
 		fmt.Println(err)
 	}
-	word, _ := dict.Search(key)
 	fmt.Println(word)
 }
