@@ -28,9 +28,9 @@ func main() {
 	// a = 10
 	account := accounts.NewAccount("king")
 	account.Deposit(20)
-	err := account.Withdraw(30)
+	err := account.Withdraw(10)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	fmt.Println(account.Balance())
+	fmt.Println(account)
 }
