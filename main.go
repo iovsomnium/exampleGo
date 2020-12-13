@@ -2,10 +2,12 @@
 package main
 
 import (
+	"errors"
 	"fmt"
-
-	"github.com/iovsomnium/exampleGo/mydict"
+	"net/http"
 )
+
+var errRequestFailed = errors.New("Request failed")
 
 //formating을 위한 librarly
 
@@ -32,8 +34,8 @@ func main() {
 	// 	log.Fatalln(err)
 	// }
 	// fmt.Println(account)
-	dict := mydict.Dictionary{}
-	key := "hello"
+	// dict := mydict.Dictionary{}
+	// key := "hello"
 	// value := "Greeting"
 
 	// err := dict.Add("hello", "world")
@@ -48,12 +50,33 @@ func main() {
 	// 	fmt.Println(err2)
 	// }
 	// fmt.Println(definition)
-	dict.Add(key, "first")
-	dict.Search(key)
-	dict.Delete("queen")
-	word, err := dict.Search(key)
-	if err != nil {
-		fmt.Println(err)
+	// dict.Add(key, "first")
+	// dict.Search(key)
+	// dict.Delete("queen")
+	// word, err := dict.Search(key)
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
+	// fmt.Println(word)
+	urls := []string{
+		"https://www.airbnb.com/",
+		"https://www.google.com",
+		"https://www.amazon.com",
+		"https://www.reddit.com/",
+		"https://soundcloud.com",
+		"https://www.facebook.com/",
+		"https://www.instargram",
 	}
-	fmt.Println(word)
+	for _, url := range urls {
+		hitURL(url)
+	}
+}
+
+func hitURL(url string) error {
+	fmt.Println("checking:", url)
+	resp, err := http.Get(url)
+	if err == nil || resp.StatusCode >= 400 {
+		return errRequestFailed
+	}
+	return nil
 }
