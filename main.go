@@ -58,6 +58,8 @@ func main() {
 	// 	fmt.Println(err)
 	// }
 	// fmt.Println(word)
+	var results = make(map[string]string)
+
 	urls := []string{
 		"https://www.airbnb.com/",
 		"https://www.google.com",
@@ -67,6 +69,7 @@ func main() {
 		"https://www.facebook.com/",
 		"https://www.instargram",
 	}
+	results["hello"] = "Hello"
 	for _, url := range urls {
 		hitURL(url)
 	}
