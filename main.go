@@ -69,9 +69,16 @@ func main() {
 		"https://www.facebook.com/",
 		"https://www.instargram",
 	}
-	results["hello"] = "Hello"
 	for _, url := range urls {
-		hitURL(url)
+		result := "OK"
+		err := hitURL(url)
+		if err != nil {
+			result = "Failed"
+		}
+		results[url] = result
+	}
+	for url, result := range results {
+		fmt.Println(url, result)
 	}
 }
 
