@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"time"
 )
 
 var errRequestFailed = errors.New("Request failed")
@@ -58,27 +59,25 @@ func main() {
 	// 	fmt.Println(err)
 	// }
 	// fmt.Println(word)
-	var results = make(map[string]string)
+	c := make(chan bool)
+	people := [2]string{"king", "queen"}
+	for _, person := range people {
+		go isReal(person, c)
+	}
+	result := <-c
+	fmt.Println(result)
 
-	urls := []string{
-		"https://www.airbnb.com/",
-		"https://www.google.com",
-		"https://www.amazon.com",
-		"https://www.reddit.com/",
-		"https://soundcloud.com",
-		"https://www.facebook.com/",
-		"https://www.instargram",
-	}
-	for _, url := range urls {
-		result := "OK"
-		err := hitURL(url)
-		if err != nil {
-			result = "Failed"
-		}
-		results[url] = result
-	}
-	for url, result := range results {
-		fmt.Println(url, result)
+}
+
+func isReal(peson string, c chan bool) {
+	time.Sleep(time.Second * 5)
+	c <- true
+}
+
+func personCount(person string) {
+	for i := 0; i < 10; i++ {
+		fmt.Println(person, "is human", i)
+		time.Sleep(time.Second)
 	}
 }
 
