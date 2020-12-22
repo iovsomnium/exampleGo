@@ -59,7 +59,7 @@ func main() {
 	// 	fmt.Println(err)
 	// }
 	// fmt.Println(word)
-	c := make(chan bool)
+	c := make(chan string)
 	people := [2]string{"king", "queen"}
 	for _, person := range people {
 		go isReal(person, c)
@@ -68,10 +68,10 @@ func main() {
 	fmt.Println(<-c)
 }
 
-func isReal(person string, c chan bool) {
-	time.Sleep(time.Second * 5)
+func isReal(person string, c chan string) {
+	time.Sleep(time.Second * 10)
 	fmt.Println(person)
-	c <- true
+	c <- person + "is winner"
 }
 
 func personCount(person string) {
