@@ -1,2 +1,2 @@
 # Example GO
-간단한 Go 예제 입니다.
+간단한 GO project 예제입니다.
